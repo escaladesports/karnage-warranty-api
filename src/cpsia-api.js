@@ -1,4 +1,5 @@
 const request = require('request-promise-native');
+const typeValidator = require('./typeValidator.js');
 
 function cpsiaRequest(brand, business) {
 	const endpoint = `https://apis.escaladesports.com/v1/cpsia/get/${brand}/${business}`;
@@ -12,7 +13,7 @@ function cpsiaRequest(brand, business) {
 * @returns {Object} Returns an object containing formatted response data
 */
 function formatCpsiaResponse(responseData) {
-	const parsed = JSON.parse(responseData);
+	const parsed = typeValidator.isString(responseData) ? JSON.parse(responseData) : responseData;
 	const fileData = parsed.data.files;
 	const formattedData = {
 		certificates: []
