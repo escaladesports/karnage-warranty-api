@@ -7,7 +7,7 @@ plugins:
   - serverless-offline
 
 functions:
-  dealerProximity:
+  cpsia:
     handler: handler.endpoint
     events:
       - http:

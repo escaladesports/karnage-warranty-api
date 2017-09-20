@@ -1,6 +1,6 @@
 'use strict';
 
-const dealerApi = require('./src/dealer-api.js');
+const cpsiaApi = require('./src/cpsia-api.js');
 
 module.exports.endpoint = (event, context, callback) => {
   const params = {

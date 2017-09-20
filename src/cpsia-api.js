@@ -1,6 +1,6 @@
 const request = require('request-promise-native');
 
-function proximityRequest(brand, business) {
+function cpsiaRequest(brand, business) {
 	const endpoint = `https://apis.escaladesports.com/v1/cpsia/get/${brand}/${business}`;
 	return request(endpoint);
 }
