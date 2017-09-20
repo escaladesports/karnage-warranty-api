@@ -9,9 +9,10 @@ module.exports.endpoint = (event, context, callback) => {
   };
 
   cpsiaApi.cpsiaRequest(params).then(cpsiaData => {
+    const body = JSON.stringify(cpsiaData);
     const response = {
       statusCode: 200,
-      body: cpsiaData,
+      body,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true
