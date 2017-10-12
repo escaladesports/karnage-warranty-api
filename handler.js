@@ -1,15 +1,14 @@
 'use strict';
 
-const cpsiaApi = require('./src/cpsia-api.js');
+const manualsApi = require('./src/manuals-api.js');
 
 module.exports.endpoint = (event, context, callback) => {
   const params = {
     brand: event.pathParameters.brand,
-    business: event.pathParameters.business
   };
 
-  cpsiaApi.cpsiaRequest(params).then(cpsiaData => {
-    const body = JSON.stringify(cpsiaData);
+  manualsApi.manualsRequest(params).then(manualsData => {
+    const body = JSON.stringify(manualsData);
     const response = {
       statusCode: 200,
       body,
