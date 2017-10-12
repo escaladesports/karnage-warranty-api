@@ -1,15 +1,15 @@
 const request = require('request-promise-native');
 const typeValidator = require('./typeValidator.js');
 
-function manualsRequest(brand, business) {
-	const endpoint = `https://apis.escaladesports.com/v1/manuals/get/${brand}/${business}`;
+function manualsRequest(brand) {
+	const endpoint = `https://apis.escaladesports.com/v1/manuals/get/${brand}`;
 	return request(endpoint);
 }
 
 /**
-* Formats raw responses from the Escalade manuals Certificate API into a more easily consumable form
+* Formats raw responses from the Escalade manuals API into a more easily consumable form
 * @param {Object} responseData API response data
-* @param {Object.<Object>} responseData.files Object containing various arrays of certificate file names
+* @param {Object.<Object>} responseData.files Object containing various arrays of manual file names
 * @returns {Object} Returns an object containing formatted response data
 */
 function formatManualsResponse(responseData) {
@@ -36,23 +36,22 @@ function formatManualsResponse(responseData) {
 
 
 /**
-* Use to make a request to the Escalade manuals Certificate API (if passed valid data)
+* Use to make a request to the Escalade manuals API (if passed valid data)
 * @param {Object} data Request data
 * @param {String} data.brand Brand name to retrieve manuals certificates for
-* @param {Number} data.business Business ('sports' or 'archery') to retrieve manuals certificates for
 * @returns {Promise.<Object>} Returns a promise resolving to a JSON response from the API (or an error
 * if passed invalid data)
 * @example
-* manualsApi.manualsRequest('bear', 'archery').then( ... )
+* manualsApi.manualsRequest({brand: 'goalrilla'}).then( ... )
 */
 module.exports.manualsRequest = function(data) {
 	// validate
-	if (!data.brand || !data.business) {
+	if (!data.brand) {
 		return Promise.reject({
 			code: 'malformed',
 			error: new Error('Malformed request data')
 		});
 	}
 	// make request if valid
-	return manualsRequest(data.brand, data.business).then(responseData => formatManualsResponse(responseData));
+	return manualsRequest(data.brand).then(responseData => formatManualsResponse(responseData));
 }
