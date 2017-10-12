@@ -5,5 +5,8 @@
   "dependencies": {
     "request": "^2.82.0",
     "request-promise-native": "^1.0.4"
+  },
+  "scripts": {
+	  "dev": "serverless offline start"
   }
 }
