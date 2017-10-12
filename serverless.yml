@@ -7,7 +7,7 @@ plugins:
   - serverless-offline
 
 functions:
-  cpsia:
+  manuals:
     handler: handler.endpoint
     events:
       - http:
