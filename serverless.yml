@@ -1,4 +1,4 @@
-service: escalade-manuals # NOTE: update this with your service name
+service: goalrilla-quote-api # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs6.10
@@ -7,15 +7,10 @@ plugins:
   - serverless-offline
 
 functions:
-  manuals:
-    handler: handler.endpoint
+  postQuoteRequest:
+    handler: handler.postQuoteRequest
     events:
       - http:
-          path: manuals/{brand}
-          method: get
+          path: quote
+          method: post
           cors: true
-          request:
-            parameters:
-              paths:
-                brand: true
-                business: true

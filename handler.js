@@ -2,10 +2,25 @@
 
 const manualsApi = require('./src/manuals-api.js');
 
-module.exports.endpoint = (event, context, callback) => {
+module.exports.postQuoteRequest = (event, context, callback) => {
   const params = {
-    brand: event.pathParameters.brand,
+    dealerId: event.body.dealerId,
+    dealerName: event.body.dealerName,
+    dealerAddress: event.body.dealerAddress,
+    dealerCity: event.body.dealerCity,
+    dealerZip: event.body.dealerZip,
+    dealerPhone: event.body.dealerPhone,
+    userFirstName: event.body.userFirstName,
+    userLastName: event.body.userLastName,
+    userEmail: event.body.userEmail,
+    userPhone: event.body.userPhone,
+    contactPreference: event.body.contactPreference,
+    userState: event.body.userState,
+    userZip: event.body.userZip
   };
+
+  console.log('endpoint called, event:');
+  console.dir(event.body);
 
   manualsApi.manualsRequest(params).then(manualsData => {
     const body = JSON.stringify(manualsData);
