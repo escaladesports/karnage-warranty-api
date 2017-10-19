@@ -1,9 +1,11 @@
 const request = require('request-promise-native');
 const queryValidator = require('./query-validator.js');
 
-function manualsRequest(brand) {
-	const endpoint = `https://apis.escaladesports.com/v1/manuals/get/${brand}`;
-	return request(endpoint);
+function postQuoteRequest(data) {
+	// email relevant parties
+	// post google sheets request
+	// return promise
+	return Promise.resolve('true');
 }
 
 /**
@@ -24,5 +26,5 @@ module.exports.postQuote = function(data) {
 		});
 	}
 	// make request if valid
-	return Promise.resolve('true');
+	return postQuoteRequest(data);
 }
