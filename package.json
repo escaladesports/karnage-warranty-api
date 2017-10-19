@@ -9,6 +9,6 @@
     "sparkpost": "^2.1.2"
   },
   "scripts": {
-    "dev": "serverless offline start"
+    "dev": "NODE_ENV=dev serverless offline start"
   }
 }
