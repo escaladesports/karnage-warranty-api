@@ -3,24 +3,27 @@
 const quotesApi = require('./src/quotes-api.js');
 
 module.exports.postQuoteRequest = (event, context, callback) => {
+  const body = JSON.parse(event.body);
+
   const params = {
-    dealerId: event.body.dealerId,
-    dealerName: event.body.dealerName,
-    dealerAddress: event.body.dealerAddress,
-    dealerCity: event.body.dealerCity,
-    dealerZip: event.body.dealerZip,
-    dealerPhone: event.body.dealerPhone,
-    userFirstName: event.body.userFirstName,
-    userLastName: event.body.userLastName,
-    userEmail: event.body.userEmail,
-    userPhone: event.body.userPhone,
-    contactPreference: event.body.contactPreference,
-    userState: event.body.userState,
-    userZip: event.body.userZip
+    dealerId: body.dealerId,
+    dealerName: body.dealerName,
+    dealerAddress: body.dealerAddress,
+    dealerCity: body.dealerCity,
+    dealerState: body.dealerState,
+    dealerZip: body.dealerZip,
+    dealerPhone: body.dealerPhone,
+    userFirstName: body.userFirstName,
+    userLastName: body.userLastName,
+    userEmail: body.userEmail,
+    userPhone: body.userPhone,
+    contactPreference: body.contactPreference,
+    userState: body.userState,
+    userZip: body.userZip
   };
 
   console.log('endpoint called, event:');
-  console.dir(event.body);
+  console.dir(body);
 
   quotesApi.postQuote(params).then(responseData => {
     const body = JSON.stringify(responseData);
