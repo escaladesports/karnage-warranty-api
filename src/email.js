@@ -1,13 +1,3 @@
-require('dotenv').config({silent: true});
-const sparkpost = require('sparkpost');
-
-const debug = (pricess.env.NODE_ENV === 'dev');
-const sparkpostKey = process.env.SPARKPOST_API_KEY;
-const sparkpostOptions = {
-	debug // disable before production!
-}
-const emailClient = new SparkPost(sparkpostKey, sparkpostOptions);
-
 /**
 	Sends a quote request email filled-out with param data to specified recipients
 	@param {Object} data Quote request data from form/etc.
