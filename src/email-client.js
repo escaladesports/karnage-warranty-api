@@ -7,6 +7,9 @@ const defaultOptions = {
 	debug // disable before production!
 }
 
+/**
+	Email client, abstracts underlying API/email logic
+*/
 class EmailClient {
 	constructor(key, options) {
 		this.client = new Sparkpost(key, options);
