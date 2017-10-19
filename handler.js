@@ -1,6 +1,6 @@
 'use strict';
 
-const manualsApi = require('./src/manuals-api.js');
+const quotesApi = require('./src/quotes-api.js');
 
 module.exports.postQuoteRequest = (event, context, callback) => {
   const params = {
@@ -22,8 +22,8 @@ module.exports.postQuoteRequest = (event, context, callback) => {
   console.log('endpoint called, event:');
   console.dir(event.body);
 
-  manualsApi.manualsRequest(params).then(manualsData => {
-    const body = JSON.stringify(manualsData);
+  quotesApi.postQuote(params).then(responseData => {
+    const body = JSON.stringify(responseData);
     const response = {
       statusCode: 200,
       body,

@@ -53,7 +53,7 @@ function formatManualsResponse(responseData) {
 * @example
 * manualsApi.manualsRequest({brand: 'goalrilla'}).then( ... )
 */
-module.exports.manualsRequest = function(data) {
+module.exports.postQuote = function(data) {
 	// validate
 	if (!data.brand) {
 		return Promise.reject({
