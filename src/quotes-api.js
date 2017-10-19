@@ -1,4 +1,5 @@
 const request = require('request-promise-native');
+const queryValidator = require('./query-validator.js');
 
 function manualsRequest(brand) {
 	const endpoint = `https://apis.escaladesports.com/v1/manuals/get/${brand}`;
@@ -16,12 +17,12 @@ function manualsRequest(brand) {
 */
 module.exports.postQuote = function(data) {
 	// validate
-	if (!data.brand) {
+	if (!queryValidator.validateQuotePost(data)) {
 		return Promise.reject({
 			code: 'malformed',
 			error: new Error('Malformed request data')
 		});
 	}
 	// make request if valid
-	return manualsRequest(data.brand).then(responseData => formatManualsResponse(responseData));
+	return Promise.resolve('true');
 }
