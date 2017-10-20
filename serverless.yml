@@ -1,6 +1,6 @@
 service: goalrilla-quote-api # NOTE: update this with your service name
 custom:
-  secrets: ${file(env.yaml):prod}
+  secrets: ${file(env.yml):prod}
 provider:
   name: aws
   runtime: nodejs6.10
