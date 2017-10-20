@@ -10,7 +10,7 @@ function sendQuoteRequestEmail(data, sendTo) {
 	const client = createClient();
 	const subject = 'New dealer quote request from goalrilla.com';
 	const message = `<html><body><p>Dealer quote request received from goalrilla.com:</p>
-	<p>Claim ID: ${data.claimId}</p>
+	<p>Request ID: ${data.requestId}</p>
 	<h2>User</h2>
 	<ul>
 		<li>First name: ${data.userFirstName}</li>
