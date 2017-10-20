@@ -15,8 +15,18 @@ class EmailClient {
 		this.client = new Sparkpost(key, options);
 	}
 
-	send() {
-
+	send(recipients) {
+		this.client.transmissions.send({
+			options: {
+				sandbox: true
+			},
+			content: {
+				from: 'testing@goalrilla.com',
+				subject: 'Hello World!',
+				html: '<html><body><p>Testing mail transmission</p></body></html>',
+				recipients: recipients.map(address => ({ address }))
+			}
+		})
 	}
 }
 
