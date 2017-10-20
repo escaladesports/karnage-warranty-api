@@ -1,32 +1,44 @@
 require('dotenv').config({silent: true});
 const sparkpost = require('sparkpost');
 
-const debug = (pricess.env.NODE_ENV === 'dev');
+const debug = (process.env.NODE_ENV === 'dev');
 const sparkpostKey = process.env.SPARKPOST_API_KEY;
 const defaultOptions = {
 	debug // disable before production!
 }
+
+console.log('debug: '+debug);
 
 /**
 	Email client, abstracts underlying API/email logic
 */
 class EmailClient {
 	constructor(key, options) {
-		this.client = new Sparkpost(key, options);
+		this.client = new sparkpost(key, options);
 	}
 
-	send(recipients) {
-		this.client.transmissions.send({
-			options: {
-				sandbox: true
-			},
+	send(messageData, recipients) {
+		console.log('sending email');
+		const transmission = {
 			content: {
-				from: 'testing@goalrilla.com',
-				subject: 'Hello World!',
-				html: '<html><body><p>Testing mail transmission</p></body></html>',
-				recipients: recipients.map(address => ({ address }))
-			}
-		})
+				from: 'noreply@escaladeinc.com',
+				subject: messageData.subject,
+				html: messageData.message
+			},
+			recipients: recipients.map(address => ({ address }))
+		}
+
+		return this.client.transmissions.send(transmission)
+		  .then(data => {
+		    console.log('Mail sent successfully');
+		    console.dir(data);
+		    return true;
+		  })
+		  .catch(err => {
+		    console.log('Error sending mail');
+		    console.dir(err);
+		    return err;
+		  });
 	}
 }
 
