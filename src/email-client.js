@@ -7,8 +7,6 @@ const defaultOptions = {
 	debug // disable before production!
 }
 
-console.log('debug: '+debug);
-
 /**
 	Email client, abstracts underlying API/email logic
 */
@@ -18,7 +16,6 @@ class EmailClient {
 	}
 
 	send(messageData, recipients) {
-		console.log('sending email');
 		const transmission = {
 			content: {
 				from: 'noreply@escaladeinc.com',
@@ -31,7 +28,6 @@ class EmailClient {
 		return this.client.transmissions.send(transmission)
 		  .then(data => {
 		    console.log('Mail sent successfully');
-		    console.dir(data);
 		    return true;
 		  })
 		  .catch(err => {

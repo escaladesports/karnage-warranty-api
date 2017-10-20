@@ -22,9 +22,6 @@ module.exports.postQuoteRequest = (event, context, callback) => {
     userZip: body.userZip
   };
 
-  console.log('endpoint called, event:');
-  console.dir(body);
-
   quotesApi.postQuote(params).then(responseData => {
     const body = JSON.stringify(responseData);
     const response = {

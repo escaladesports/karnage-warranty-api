@@ -4,7 +4,11 @@
 	@returns {Number} Final row in range
 */
 function getFinalRangeRow(range) {
-	return 0;
+	const finalRow = parseInt(range.slice(-1));
+	if (isNaN(finalRow)) {
+		return false;
+	}
+	return finalRow;
 }
 
 module.exports = {

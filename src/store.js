@@ -3,6 +3,12 @@ const auth = require('./auth.js');
 const storeConfig = require('../config/store.config.js');
 const sheets = google.sheets('v4');
 
+/**
+	Promise wrapper around googleapis sheets append method
+	@param {Object} params Params to pass to google sheets
+	@param {Object} [options] Options to pass to google sheets (optional)
+	@returns {Promise.<Object>} Promise resolving to response from Google Sheets
+*/
 function appendPromisified(params, options={}) {
 	return new Promise((resolve, reject) => {
 		sheets.spreadsheets.values.append(params, options, (err, response) => { 
@@ -16,6 +22,15 @@ function appendPromisified(params, options={}) {
 	});
 }
 
+/**
+	Appends data to a Google Sheets spreadsheet
+	@param {Object} auth Google JWT auth object
+	@param {Object} spreadsheetData
+	@param {String} spreadsheetData.spreadsheetId Google Sheets spreadsheet ID
+	@param {String} spreadsheetData.range Google Sheets A1 notation range to append to
+	@param {Array.<Array>} dataRows Spreadsheet data to append to sheet formatted as a two-dimensional array
+	@returns {Promise.<Object>} Promise resolving to response from Google Sheets
+*/
 function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 	const resource = {
 		majorDimension: 'ROWS',
@@ -32,10 +47,16 @@ function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 	return appendPromisified(params, {});
 }
 
+/**
+	Save a dealer quote request in datastore (currently using Google Sheets)
+	@param {Object} data Dealer request data object
+*/
 function saveQuoteRequest(data) {
 	const sheetId = storeConfig.spreadsheetId;
 	const sheetName = storeConfig.spreadsheetName;
 
+	// first two rows of spreadsheet are header information
+	// uses columns A:N for key-value storage
 	const appendRange = sheetName + '!A2:N2';
 
 	const spreadsheetData = {

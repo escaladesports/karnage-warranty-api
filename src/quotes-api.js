@@ -1,6 +1,7 @@
 const request = require('request-promise-native');
 const queryValidator = require('./query-validator.js');
 const store = require('./store.js');
+const range = require('./range.js');
 const email = require('./email.js');
 const emailConfig = require('../config/email.config.js');
 
@@ -10,7 +11,8 @@ function postQuoteRequest(data) {
 	return store.saveQuoteRequest(data)
 	.then(res => {
 		// add in additional information from google sheets
-		const updatedData = Object.assign({}, data, {requestId: 0});
+		const requestId = range.getFinalRangeRow(res.updates.updatedRange);
+		const updatedData = Object.assign({}, data, { requestId });
 		// email relevant parties
 		return email.sendQuoteRequestEmail(updatedData, emailConfig.quoteRequestRecipients)
 	});
