@@ -3,7 +3,6 @@
     "serverless-offline": "^3.16.0"
   },
   "dependencies": {
-    "dotenv": "^4.0.0",
     "googleapis": "^22.2.0",
     "request": "^2.82.0",
     "request-promise-native": "^1.0.4",
