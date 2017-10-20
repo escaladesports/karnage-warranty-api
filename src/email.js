@@ -17,6 +17,7 @@ function sendQuoteRequestEmail(data, sendTo) {
 		<li>Last name: ${data.userLastName}</li>
 		<li>Email: ${data.userEmail}</li>
 		<li>Phone: ${data.userPhone}</li>
+		<li>Contact preference: ${data.contactPreference}</li>
 		<li>State: ${data.userState}</li>
 		<li>Zip code: ${data.userZip}</li>
 	</ul>
