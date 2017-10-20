@@ -1,4 +1,3 @@
-require('dotenv').config({silent: true});
 const sparkpost = require('sparkpost');
 
 const debug = (process.env.NODE_ENV === 'dev');

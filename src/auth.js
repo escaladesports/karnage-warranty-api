@@ -1,4 +1,3 @@
-require('dotenv').config({silent: true});
 const google = require('googleapis');
 
 const googleSheetsClientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
