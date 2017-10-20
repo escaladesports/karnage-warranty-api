@@ -6,10 +6,13 @@ const emailConfig = require('../config/email.config.js');
 
 function postQuoteRequest(data) {
 	// post google sheets request
+	// order is important, do this first so we can pass claim # to email properly
 	return store.saveQuoteRequest(data)
 	.then(res => {
+		// add in additional information from google sheets
+		const updatedData = Object.assign({}, data, {requestId: 0});
 		// email relevant parties
-		return email.sendQuoteRequestEmail(data, emailConfig.quoteRequestRecipients)
+		return email.sendQuoteRequestEmail(updatedData, emailConfig.quoteRequestRecipients)
 	});
 }
 
