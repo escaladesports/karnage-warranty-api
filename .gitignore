@@ -8,3 +8,4 @@ jspm_packages
 # sensitive
 .env
 env.yaml
+env.yml
