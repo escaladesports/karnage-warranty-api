@@ -5,7 +5,7 @@ const range = require('./range.js');
 const email = require('./email.js');
 const emailConfig = require('../config/email.config.js');
 
-function postQuoteRequest(data) {
+function postQuoteActions(data) {
 	// post google sheets request
 	// order is important, do this first so we can pass claim # to email properly
 	return store.saveQuoteRequest(data)
@@ -36,5 +36,5 @@ module.exports.postQuote = function(data) {
 		});
 	}
 	// make request if valid
-	return postQuoteRequest(data);
+	return postQuoteActions(data);
 }

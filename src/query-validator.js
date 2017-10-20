@@ -15,8 +15,6 @@ function checkMissingKeys(keys, data) {
 }
 
 function validateQuotePost(params) {
-	console.log('validating data:');
-	console.dir(params);
 	// check for missing data
 	if (!checkMissingKeys([
 			'dealerId',
