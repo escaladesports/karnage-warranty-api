@@ -1,12 +1,13 @@
 const request = require('request-promise-native');
 const queryValidator = require('./query-validator.js');
 const email = require('./email.js');
+const emailConfig = require('../config/email.config.js');
 
 function postQuoteRequest(data) {
 	// email relevant parties
 	// post google sheets request
 	// return promise
-	return email.sendQuoteRequestEmail(data, [{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}]);
+	return email.sendQuoteRequestEmail(data, emailConfig.quoteRequestRecipients);
 }
 
 /**
