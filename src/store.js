@@ -57,7 +57,7 @@ function saveQuoteRequest(data) {
 
 	// first two rows of spreadsheet are header information
 	// uses columns A:N for key-value storage
-	const appendRange = sheetName + '!A2:N2';
+	const appendRange = sheetName + '!B2:O2';
 
 	const spreadsheetData = {
 		spreadsheetId: sheetId,
