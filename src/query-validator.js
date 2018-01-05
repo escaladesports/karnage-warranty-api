@@ -26,15 +26,15 @@ function validateWarrantyRegistrationPost(params) {
 			'userState',
 			'userZip',
 			'userCountry',
-			'userPhone',
-			'userEmail',
-			'receivedGift',
-			'dealerName',
-			'dealerAddress',
-			'dealerCity',
-			'dealerState',
-			'dealerZip',
-			'dealerCountry'
+			'userPhone'
+			//'userEmail',
+			//'receivedGift',
+			//'dealerName',
+			//'dealerAddress',
+			//'dealerCity',
+			//'dealerState',
+			//'dealerZip',
+			//'dealerCountry'
 		], params)) {
 		return false;
 	}
