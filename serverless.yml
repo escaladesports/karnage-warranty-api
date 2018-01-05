@@ -21,6 +21,6 @@ functions:
     handler: handler.postWarrantyRegistration
     events:
       - http:
-          path: quote
+          path: warranty-registration
           method: post
           cors: true
