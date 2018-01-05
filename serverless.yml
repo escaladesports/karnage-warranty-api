@@ -1,4 +1,4 @@
-service: goalrilla-quote-api # NOTE: update this with your service name
+service: karnage-warranty-api # NOTE: update this with your service name
 
 custom:
   secrets: ${file(env.yml):prod}
@@ -17,8 +17,8 @@ plugins:
   - serverless-offline
 
 functions:
-  postQuoteRequest:
-    handler: handler.postQuoteRequest
+  postWarrantyRegistration:
+    handler: handler.postWarrantyRegistration
     events:
       - http:
           path: quote

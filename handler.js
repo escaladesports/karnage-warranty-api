@@ -1,8 +1,8 @@
 'use strict';
 
-const quotesApi = require('./src/quotes-api.js');
+const warrantyApi = require('./src/api.js');
 
-module.exports.postQuoteRequest = (event, context, callback) => {
+module.exports.postWarrantyRegistration = (event, context, callback) => {
   const body = JSON.parse(event.body);
 
   const params = {
