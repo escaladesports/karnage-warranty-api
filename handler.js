@@ -1,28 +1,32 @@
 'use strict';
 
-const warrantyApi = require('./src/api.js');
+const api = require('./src/api.js');
 
 module.exports.postWarrantyRegistration = (event, context, callback) => {
   const body = JSON.parse(event.body);
 
   const params = {
-    dealerId: body.dealerId,
-    dealerName: body.dealerName,
-    dealerAddress: body.dealerAddress,
-    dealerCity: body.dealerCity,
-    dealerState: body.dealerState,
-    dealerZip: body.dealerZip,
-    dealerPhone: body.dealerPhone,
-    userFirstName: body.userFirstName,
-    userLastName: body.userLastName,
-    userEmail: body.userEmail,
-    userPhone: body.userPhone,
-    contactPreference: body.contactPreference,
-    userState: body.userState,
-    userZip: body.userZip
+    bowModel: body['karnage-warranty-model'],
+    bowSerialNumber: body['karnage-warranty-serial-number'],
+    userFirstName: body['karnage-warranty-customer-first-name'],
+    userLastName: body['karnage-warranty-customer-last-name'],
+    userAddress: body['karnage-warranty-customer-mailing-address'],
+    userCity: body['karnage-warranty-customer-city'],
+    userState: body['karnage-warranty-customer-state'],
+    userZip: body['karnage-warranty-customer-zip'],
+    userCountry: body['karnage-warranty-customer-country'],
+    userPhone: body['karnage-warranty-customer-phone'],
+    userEmail: body['karnage-warranty-customer-email'],
+    receivedGift: body['karnage-warranty-received-gift'],
+    dealerName: body['karnage-warranty-dealer-name'],
+    dealerAddress: body['karnage-warranty-dealer-address'],
+    dealerCity: body['karnage-warranty-dealer-city'],
+    dealerState: body['karnage-warranty-dealer-state'],
+    dealerZip: body['karnage-warranty-dealer-zip'],
+    dealerCountry: body['karnage-warranty-dealer-country']
   };
 
-  quotesApi.postQuote(params).then(responseData => {
+  api.postWarrantyRegistration(params).then(responseData => {
     const body = JSON.stringify(responseData);
     const response = {
       statusCode: 200,

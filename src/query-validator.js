@@ -14,23 +14,27 @@ function checkMissingKeys(keys, data) {
 	return true;
 }
 
-function validateQuotePost(params) {
+function validateWarrantyRegistrationPost(params) {
 	// check for missing data
 	if (!checkMissingKeys([
-			'dealerId',
+			'bowModel',
+			'bowSerialNumber',
+			'userFirstName',
+			'userLastName',
+			'userAddress',
+			'userCity',
+			'userState',
+			'userZip',
+			'userCountry',
+			'userPhone',
+			'userEmail',
+			'receivedGift',
 			'dealerName',
 			'dealerAddress',
 			'dealerCity',
 			'dealerState',
 			'dealerZip',
-			'dealerPhone',
-			'userFirstName',
-			'userLastName',
-			'userEmail',
-			'userPhone',
-			'contactPreference',
-			'userState',
-			'userZip'
+			'dealerCountry'
 		], params)) {
 		return false;
 	}
@@ -38,5 +42,5 @@ function validateQuotePost(params) {
 }
 
 module.exports = {
-	validateQuotePost
+	validateWarrantyRegistrationPost
 }

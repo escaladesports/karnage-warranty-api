@@ -48,16 +48,16 @@ function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 }
 
 /**
-	Save a dealer quote request in datastore (currently using Google Sheets)
-	@param {Object} data Dealer request data object
+	Save a warranty registration in datastore (currently using Google Sheets)
+	@param {Object} data Warranty registration data object
 */
-function saveQuoteRequest(data) {
+function saveWarrantyRegistration(data) {
 	const sheetId = storeConfig.spreadsheetId;
 	const sheetName = storeConfig.spreadsheetName;
 
 	// first two rows of spreadsheet are header information
 	// uses columns A:N for key-value storage
-	const appendRange = sheetName + '!B2:O2';
+	const appendRange = sheetName + '!B2:S2';
 
 	const spreadsheetData = {
 		spreadsheetId: sheetId,
@@ -66,20 +66,24 @@ function saveQuoteRequest(data) {
 
 	// quote data
 	const rows = [[
+		data.bowModel,
+		data.bowSerialNumber,
 		data.userFirstName,
 		data.userLastName,
-		data.userEmail,
-		data.userPhone,
-		data.contactPreference,
+		data.userAddress,
+		data.userCity,
 		data.userState,
 		data.userZip,
-		data.dealerId,
+		data.userCountry,
+		data.userPhone,
+		data.userEmail,
+		data.receivedGift,
 		data.dealerName,
 		data.dealerAddress,
 		data.dealerCity,
 		data.dealerState,
 		data.dealerZip,
-		data.dealerPhone
+		data.dealerCountry
 	]];
 
 	return auth.authenticateGoogleSheets(false)
@@ -89,5 +93,5 @@ function saveQuoteRequest(data) {
 }
 
 module.exports = {
-	saveQuoteRequest
+	saveWarrantyRegistration
 }

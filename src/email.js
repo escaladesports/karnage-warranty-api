@@ -1,35 +1,42 @@
 const createClient = require('./email-client.js').createClient;
 /**
-	Sends a quote request email filled-out with param data to specified recipients
-	@param {Object} data Quote request data from form/etc.
+	Sends a warranty registration notification filled-out with param data to specified recipients
+	@param {Object} data Warranty registration data from form/etc.
 	@param {String|Array.<String>} sendTo String or array of strings with email addresses of recipients
 	@returns {Promise}
 */
-function sendQuoteRequestEmail(data, sendTo) {
+function sendWarrantyRegistrationEmail(data, sendTo) {
 // take data and send to sendTo
 	const client = createClient();
-	const subject = 'New dealer quote request from goalrilla.com';
-	const message = `<html><body><p>Dealer quote request received from goalrilla.com:</p>
+	const subject = 'New warranty registration from karnagecrossbows.com';
+	const message = `<html><body><p>Warranty registration received from karnagecrossbows.com:</p>
 	<p>Request ID: ${data.requestId}</p>
-	<h2>User</h2>
+	<h2>Bow Information</h2>
+	<ul>
+		<li>Model: ${data.bowModel}</li>
+		<li>Serial number: ${data.bowSerialNumber}</li>
+		<li>Received as gift?: ${data.receivedGift}</li>
+	</ul>
+	<h2>Customer Information</h2>
 	<ul>
 		<li>First name: ${data.userFirstName}</li>
 		<li>Last name: ${data.userLastName}</li>
-		<li>Email: ${data.userEmail}</li>
-		<li>Phone: ${data.userPhone}</li>
-		<li>Contact preference: ${data.contactPreference}</li>
+		<li>Address: ${data.userAddress}</li>
+		<li>City: ${data.userCity}</li>
 		<li>State: ${data.userState}</li>
 		<li>Zip code: ${data.userZip}</li>
+		<li>Country: ${data.userCountry}</li>
+		<li>Phone: ${data.userPhone}</li>
+		<li>Email: ${data.userEmail}</li>
 	</ul>
-	<h2>Dealer</h2>
+	<h2>Dealer Information</h2>
 	<ul>
-		<li>Dealer ID: ${data.dealerId}</li>
-		<li>Name: ${data.dealerName}</li>
-		<li>Phone: ${data.dealerPhone}</li>
+		<li>Store Name: ${data.dealerName}</li>
 		<li>Address: ${data.dealerAddress}</li>
 		<li>City: ${data.dealerCity}</li>
 		<li>State: ${data.dealerState}</li>
 		<li>Zip code: ${data.dealerZip}</li>
+		<li>Country: ${data.dealerCountry}</li>
 	</ul>
 	</body></html>`;
 
@@ -37,5 +44,5 @@ function sendQuoteRequestEmail(data, sendTo) {
 }
 
 module.exports = {
-	sendQuoteRequestEmail
+	sendWarrantyRegistrationEmail
 }
