@@ -57,7 +57,7 @@ function saveWarrantyRegistration(data) {
 
 	// first two rows of spreadsheet are header information
 	// uses columns A:N for key-value storage
-	const appendRange = sheetName + '!B2:S2';
+	const appendRange = sheetName + '!A2:R2';
 
 	const spreadsheetData = {
 		spreadsheetId: sheetId,
@@ -68,6 +68,7 @@ function saveWarrantyRegistration(data) {
 	const rows = [[
 		data.bowModel,
 		data.bowSerialNumber,
+		data.receivedGift,
 		data.userFirstName,
 		data.userLastName,
 		data.userAddress,
@@ -77,7 +78,6 @@ function saveWarrantyRegistration(data) {
 		data.userCountry,
 		data.userPhone,
 		data.userEmail,
-		data.receivedGift,
 		data.dealerName,
 		data.dealerAddress,
 		data.dealerCity,
