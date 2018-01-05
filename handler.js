@@ -39,6 +39,9 @@ module.exports.postWarrantyRegistration = (event, context, callback) => {
     callback(null, response);
   }).catch(err => {
     let msg = 'There was a problem with your request. Please try again later';
+
+    console.error('Error:');
+    console.dir(err);
     
     if (err.code === 'malformed') {
       msg = 'The request data was malformed- ensure parameter data is correct and try again.'
