@@ -14,7 +14,7 @@ function postWarrantyRegistrationActions(data) {
 		const requestId = range.getFinalRangeRow(res.updates.updatedRange);
 		const updatedData = Object.assign({}, data, { requestId });
 		// email relevant parties
-		return email.sendWarrantyRegistrationEmail(updatedData, emailConfig.quoteRequestRecipients)
+		return email.sendWarrantyRegistrationEmail(updatedData, emailConfig.warrantyRegistrationRecipients)
 	});
 }
 
