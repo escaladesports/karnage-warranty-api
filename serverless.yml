@@ -6,7 +6,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs6.10
-  stage: dev
+  stage: prod
   region: us-east-2
   environment:
     SPARKPOST_API_KEY: "${self:custom.secrets.SPARKPOST_API_KEY}"
