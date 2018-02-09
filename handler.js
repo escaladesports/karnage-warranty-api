@@ -1,5 +1,5 @@
 'use strict';
-
+require('envdotjs').load()
 const api = require('./src/api.js');
 
 module.exports.postWarrantyRegistration = (event, context, callback) => {
@@ -42,7 +42,7 @@ module.exports.postWarrantyRegistration = (event, context, callback) => {
 
     console.error('Error:');
     console.dir(err);
-    
+
     if (err.code === 'malformed') {
       msg = 'The request data was malformed- ensure parameter data is correct and try again.'
     }

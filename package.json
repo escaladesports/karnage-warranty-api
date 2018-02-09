@@ -1,8 +1,11 @@
 {
   "devDependencies": {
+    "esca-scripts": "^0.12.1",
+    "serverless": "^1.26.0",
     "serverless-offline": "^3.16.0"
   },
   "dependencies": {
+    "envdotjs": "^1.1.4",
     "googleapis": "^22.2.0",
     "request": "^2.82.0",
     "request-promise-native": "^1.0.4",
@@ -10,7 +13,9 @@
   },
   "scripts": {
     "dev": "NODE_ENV=dev serverless offline start",
-	"deploy": "serverless deploy --stage test",
-	"deploy-prod": "serverless deploy --stage prod"
+    "deploy": "serverless deploy --stage test",
+	 "deploy-prod": "serverless deploy --stage prod",
+	 "encrypt": "envdotjs --encrypt",
+	 "unencrypt": "envdotjs --unencrypt"
   }
 }

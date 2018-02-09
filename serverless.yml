@@ -1,7 +1,6 @@
 service: karnage-warranty-api # NOTE: update this with your service name
 
 custom:
-  secrets: ${file(env.yml):prod}
   defaultStage: dev
 
 provider:
@@ -9,10 +8,6 @@ provider:
   runtime: nodejs6.10
   stage: "${opt:stage, self:custom.defaultStage}"
   region: us-east-2
-  environment:
-    SPARKPOST_API_KEY: "${self:custom.secrets.SPARKPOST_API_KEY}"
-    GOOGLE_SHEETS_API_KEY: "${self:custom.secrets.GOOGLE_SHEETS_API_KEY}"
-    GOOGLE_SHEETS_CLIENT_EMAIL: "${self:custom.secrets.GOOGLE_SHEETS_CLIENT_EMAIL}"
 
 plugins:
   - serverless-offline
